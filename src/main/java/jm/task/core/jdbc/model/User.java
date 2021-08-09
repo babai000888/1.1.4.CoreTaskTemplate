@@ -1,10 +1,27 @@
 package jm.task.core.jdbc.model;
 
 import javax.persistence.*;
+import java.util.Objects;
 
 @Entity
 @Table (name = "Users")
 public class User {
+
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(this.id);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null) return false;
+        if (this.getClass() != obj.getClass()) return false;
+        User other = (User) obj;
+        return Objects.equals(this.id, other.getId());
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;

@@ -38,7 +38,8 @@ public class Util {
                             "org.hibernate.dialect.MySQLDialect")
                     .setProperty("hibernate.show_sql", "true")
                     .setProperty("format_sql", "true")
-                    .setProperty("use_sql_comments", "true");
+                    .setProperty("use_sql_comments", "true")
+                    .setProperty("hibernate.allow_update_outside_transaction", "true");
             StandardServiceRegistryBuilder builder = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties());
             factory = configuration.buildSessionFactory(builder.build());
         }
